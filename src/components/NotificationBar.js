@@ -1,3 +1,7 @@
+import React from 'react';
+import Loading from './Loading'; // Ensure you have this component
+import { trickleListObjects, trickleUpdateObject } from '../utils/notification'; // Adjust import as needed
+
 function NotificationBar() {
     try {
         const [notifications, setNotifications] = React.useState([]);
@@ -10,14 +14,13 @@ function NotificationBar() {
         React.useEffect(() => {
             fetchNotifications();
             const interval = setInterval(fetchNotifications, 30000); // Poll every 30 seconds
-            
-            // Click outside handler
+
             const handleClickOutside = (event) => {
                 if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                     setShowDropdown(false);
                 }
             };
-            
+
             document.addEventListener('mousedown', handleClickOutside);
             return () => {
                 clearInterval(interval);
@@ -33,7 +36,7 @@ function NotificationBar() {
                     ...item.objectData,
                     id: item.objectId
                 }));
-                
+
                 setNotifications(notifs);
                 setUnreadCount(notifs.filter(n => !n.read).length);
             } catch (error) {
@@ -46,7 +49,7 @@ function NotificationBar() {
         const markAsRead = async (notificationId) => {
             try {
                 await trickleUpdateObject(`notifications:${currentUser.id}`, notificationId, { read: true });
-                setNotifications(prev => 
+                setNotifications(prev =>
                     prev.map(n => n.id === notificationId ? { ...n, read: true } : n)
                 );
                 setUnreadCount(prev => Math.max(0, prev - 1));
@@ -62,7 +65,7 @@ function NotificationBar() {
                         .filter(n => !n.read)
                         .map(n => trickleUpdateObject(`notifications:${currentUser.id}`, n.id, { read: true }))
                 );
-                
+
                 setNotifications(prev => prev.map(n => ({ ...n, read: true })));
                 setUnreadCount(0);
             } catch (error) {
@@ -72,7 +75,15 @@ function NotificationBar() {
 
         return (
             <div data-name="notification-bar" className="relative" ref={dropdownRef}>
-                <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}"
+                <button
+                    style={{
+                        padding: '10px 16px',
+                        backgroundColor: '#007bff',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '4px',
+                        cursor: 'pointer'
+                    }}
                     onClick={() => setShowDropdown(!showDropdown)}
                     className="relative p-2 rounded-full hover:bg-gray-100 focus:outline-none"
                 >
@@ -90,7 +101,15 @@ function NotificationBar() {
                             <div className="flex justify-between items-center">
                                 <h3 className="text-lg font-semibold">Notifications</h3>
                                 {unreadCount > 0 && (
-                                    <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}"
+                                    <button
+                                        style={{
+                                            padding: '4px 12px',
+                                            backgroundColor: '#007bff',
+                                            color: 'white',
+                                            border: 'none',
+                                            borderRadius: '4px',
+                                            cursor: 'pointer'
+                                        }}
                                         onClick={markAllAsRead}
                                         className="text-sm text-blue-600 hover:text-blue-800"
                                     >
@@ -131,7 +150,7 @@ function NotificationBar() {
                                                     </p>
                                                 </div>
                                                 {!notification.read && (
-                                                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                                    <span className="w-2 h-2 bg-blue-500 rounded-full ml-2 mt-1"></span>
                                                 )}
                                             </div>
                                         </div>
@@ -150,7 +169,8 @@ function NotificationBar() {
         );
     } catch (error) {
         console.error('NotificationBar render error:', error);
-        reportError(error);
         return null;
     }
 }
+
+export default NotificationBar;
