@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered HR recruitment platform for efficient candidate management and job placement">
+    <meta name="keywords" content="HR, recruitment, AI, jobs, candidates, employers, staffing">
+    <meta property="og:title" content="AI HR Recruitment Platform">
+    <meta property="og:description" content="Next-generation HR recruitment platform powered by AI">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI HR Recruitment Platform">
+    <meta name="twitter:description" content="Next-generation HR recruitment platform powered by AI">
+    <title>AI HR Recruitment Platform</title>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/components.css" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></div>
 
+    <!-- Utils -->
+    <script type="text/babel" src="utils/core.js"></script>
+    <script type="text/babel" src="utils/auth.js"></script>
+    <script type="text/babel" src="utils/notifications.js"></script>
+    <script type="text/babel" src="utils/aiAgent.js"></script>
+    <script type="text/babel" src="utils/aiAnalytics.js"></script>
+
+    <!-- Basic Components -->
+    <script type="text/babel" src="components/ErrorMessage.js"></script>
+    <script type="text/babel" src="components/Loading.js"></script>
+    <script type="text/babel" src="components/PasswordInput.js"></script>
+
+    <!-- UI Components -->
+    <script type="text/babel" src="components/NotificationBar.js"></script>
+    <script type="text/babel" src="components/SearchBar.js"></script>
+    <script type="text/babel" src="components/Header.js"></script>
+    <script type="text/babel" src="components/Footer.js"></script>
+    <script type="text/babel" src="components/Sidebar.js"></script>
+
+    <!-- Feature Components -->
+    <script type="text/babel" src="components/ResumeUploader.js"></script>
+    <script type="text/babel" src="components/JobCard.js"></script>
+    <script type="text/babel" src="components/CandidateRankingTable.js"></script>
+    <script type="text/babel" src="components/ResumeAnalysisResult.js"></script>
+    <script type="text/babel" src="components/CoverLetterAnalysis.js"></script>
+    <script type="text/babel" src="components/CulturalFitAnalysis.js"></script>
+
+    <!-- Pages -->
+    <script type="text/babel" src="pages/Home.js"></script>
+    <script type="text/babel" src="pages/Login.js"></script>
+    <script type="text/babel" src="pages/Register.js"></script>
+    <script type="text/babel" src="pages/ForgotPassword.js"></script>
+    <script type="text/babel" src="pages/Dashboard.js"></script>
+    <script type="text/babel" src="pages/Jobs.js"></script>
+    <script type="text/babel" src="pages/Candidates.js"></script>
+    <script type="text/babel" src="pages/Applications.js"></script>
+    <script type="text/babel" src="pages/Resume.js"></script>
+    <script type="text/babel" src="pages/Profile.js"></script>
+    <script type="text/babel" src="pages/Messages.js"></script>
+    <script type="text/babel" src="pages/Admin.js"></script>
+    <script type="text/babel" src="pages/AdminAI.js"></script>
+    <script type="text/babel" src="pages/RecommendedJobs.js"></script>
+
+    <!-- Main App -->
+    <script type="text/babel" src="app.js"></script>
+    <script type="text/babel" src="pages/AI.js"></script>
+    <script type="text/babel" src="features/ai/AIFeatures.js"></script>
+    <script type="text/babel" src="features/jobs/JobDetail.js"></script>
+    <script type="text/babel" src="features/jobs/JobList.js"></script>
+    <script type="text/babel" src="features/candidates/CandidateDetail.js"></script>
+    <script type="text/babel" src="features/candidates/CandidateList.js"></script>
+    <script type="text/babel" src="features/dashboard/Dashboard.js"></script>
+    <script type="text/babel" src="features/auth/LoginForm.js"></script>
+    <script type="text/babel" src="features/auth/RegisterForm.js"></script>
+    <script type="text/babel" src="features/messaging/DirectMessageList.js"></script>
+    <script type="text/babel" src="features/messaging/GroupChatList.js"></script>
+    <script type="text/babel" src="features/messaging/AIChatList.js"></script>
+    <script type="text/babel" src="features/messaging/ScheduledMessageList.js"></script>
+    <script type="text/babel" src="features/messaging/ChatWindow.js"></script>
+    <script type="text/babel" src="features/messaging/ScheduleMessageModal.js"></script>
+    <script type="text/babel" src="features/messaging/EmailIntegration.js"></script>
+    <script type="text/babel" src="features/messaging/SMSIntegration.js"></script>
+    <script type="text/babel" src="components/SkillsChart.js"></script>
+    <script type="text/babel" src="features/messaging/MessagesContainer.js"></script>
+    <script type="text/babel" src="features/messaging/MessageTabs.js"></script>
+    <script type="text/babel" src="features/messaging/MessageSearch.js"></script>
+    <script type="text/babel" src="features/messaging/ConversationsList.js"></script>
+    <script type="text/babel" src="features/messaging/EmptyMessageState.js"></script>
+    <script type="text/babel" src="features/messaging/MessagesSettings.js"></script>
+    <script type="text/babel" src="features/jobs/PostJobModal.js"></script>
+    <script type="text/babel" src="components/ResumeBuilder.js"></script>
+    <script type="text/babel" src="components/ResumeView.js"></script>
+    <script type="text/babel" src="components/MatchedJobs.js"></script>
+    <script type="text/babel" src="pages/CandidateProfile.js"></script>
+    <script type="text/babel" src="pages/CompanyProfile.js"></script>
+    <script type="text/babel" src="features/messaging/MessagingTab.js"></script>
+    <script type="text/babel" src="components/AutoRepliesSettings.js"></script>
+    <script type="text/babel" src="components/JobPostingModal.js"></script>
+    <script type="text/babel" src="components/ApplyJobModal.js"></script>
+    <script type="text/babel" src="pages/EmployerProfile.js"></script>
+    <script type="text/babel" src="components/JobApplicationsList.js"></script>
+</body>
+</html>
