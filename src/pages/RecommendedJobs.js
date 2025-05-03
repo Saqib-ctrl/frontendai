@@ -217,3 +217,4 @@ function RecommendedJobs() {
         return <ErrorMessage message="Failed to load recommended jobs" />;
     }
 }
+export default RecommendedJobs;
