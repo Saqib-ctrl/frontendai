@@ -138,3 +138,4 @@ function CompanyProfile({ companyId }) {
         return <ErrorMessage message="Failed to load company profile" />;
     }
 }
+export default CompanyProfile;
