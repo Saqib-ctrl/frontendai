@@ -106,3 +106,4 @@ function Home() {
         return <ErrorMessage message="Failed to load home page" />;
     }
 }
+export default Home;
