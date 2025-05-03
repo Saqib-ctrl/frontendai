@@ -12,7 +12,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import Home from './pages/Home';
-import DashboardPage from './pages/DashboardPage';
+import DashboardPage from './pages/Dashboard';
 import AI from './pages/AI';
 import Messages from './pages/Messages';
 
