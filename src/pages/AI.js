@@ -12,3 +12,4 @@ function AI() {
         return <ErrorMessage message="Failed to load AI features page" />;
     }
 }
+export default AI;
