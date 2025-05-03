@@ -121,3 +121,4 @@ function EmployerProfile({ employerId }) {
         return <ErrorMessage message="Failed to load employer profile" />;
     }
 }
+export default EmployerProfile;
