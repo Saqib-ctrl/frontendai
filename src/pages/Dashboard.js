@@ -307,3 +307,4 @@ function DashboardContent() {
         return <ErrorMessage message="Failed to load dashboard" />;
     }
 }
+export default DashboardPage;
