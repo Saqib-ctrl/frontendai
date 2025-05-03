@@ -267,3 +267,4 @@ function Admin() {
         return <ErrorMessage message="Failed to load admin page" />;
     }
 }
+export default Admin;
