@@ -1,11 +1,13 @@
+import React from 'react';
+
 function Sidebar({ currentUser, currentPage, onNavigate, collapsed, onToggleCollapse }) {
     try {
         const [isMobileOpen, setIsMobileOpen] = React.useState(false);
-        
+
         const baseNavItems = [
             { id: 'dashboard', icon: 'fas fa-chart-line', text: 'Dashboard', link: 'dashboard' }
         ];
-        
+
         const roleNavItems = {
             candidate: [
                 { id: 'resume', icon: 'fas fa-file-alt', text: 'My Resume', link: 'resume' },
@@ -33,7 +35,7 @@ function Sidebar({ currentUser, currentPage, onNavigate, collapsed, onToggleColl
                 { id: 'settings', icon: 'fas fa-cog', text: 'Settings', link: 'settings' }
             ]
         };
-        
+
         const navItems = [
             ...baseNavItems,
             ...(roleNavItems[currentUser?.role] || roleNavItems.candidate)
@@ -69,7 +71,7 @@ function Sidebar({ currentUser, currentPage, onNavigate, collapsed, onToggleColl
                         {!collapsed && (
                             <div className="flex items-center">
                                 <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                    {currentUser?.name.charAt(0).toUpperCase() || 'U'}
+                                    {currentUser?.name?.charAt(0).toUpperCase() || 'U'}
                                 </div>
                                 <div className="ml-3 overflow-hidden">
                                     <p className="font-medium text-gray-800 truncate">{currentUser?.name || 'User'}</p>
@@ -77,32 +79,56 @@ function Sidebar({ currentUser, currentPage, onNavigate, collapsed, onToggleColl
                                 </div>
                             </div>
                         )}
-                        
-                        <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}" 
+
+                        <button
                             onClick={onToggleCollapse}
                             className="p-2 rounded-md hover:bg-gray-100 text-gray-500 hidden md:block"
+                            style={{
+                                padding: '10px 16px',
+                                backgroundColor: '#007bff',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer'
+                            }}
                         >
                             <i className={`fas ${collapsed ? 'fa-angle-right' : 'fa-angle-left'}`}></i>
                         </button>
 
-                        <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}" 
+                        <button
                             onClick={() => setIsMobileOpen(false)}
                             className="p-2 rounded-md hover:bg-gray-100 text-gray-500 md:hidden"
+                            style={{
+                                padding: '10px 16px',
+                                backgroundColor: '#007bff',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '4px',
+                                cursor: 'pointer'
+                            }}
                         >
                             <i className="fas fa-times"></i>
                         </button>
                     </div>
-                    
+
                     <nav className="flex-1 overflow-y-auto">
                         {navItems.map((item) => (
-                            <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}"
+                            <button
                                 key={item.id}
                                 onClick={() => handleNavigation(item.link)}
                                 className={`w-full text-left px-4 py-3 flex items-center ${
-                                    currentPage === item.link 
-                                        ? 'bg-blue-50 text-blue-600' 
+                                    currentPage === item.link
+                                        ? 'bg-blue-50 text-blue-600'
                                         : 'text-gray-600 hover:bg-gray-50'
                                 }`}
+                                style={{
+                                    padding: '10px 16px',
+                                    backgroundColor: '#007bff',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer'
+                                }}
                             >
                                 <i className={`${item.icon} ${collapsed ? 'mx-auto' : 'w-6'}`}></i>
                                 {!collapsed && <span className="ml-3">{item.text}</span>}
@@ -114,7 +140,8 @@ function Sidebar({ currentUser, currentPage, onNavigate, collapsed, onToggleColl
         );
     } catch (error) {
         console.error('Sidebar render error:', error);
-        reportError(error);
         return null;
     }
 }
+
+export default Sidebar;
