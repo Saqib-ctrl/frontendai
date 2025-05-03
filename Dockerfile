@@ -2,7 +2,7 @@
 FROM python:3.10-slim
 
 WORKDIR /app
-COPY backend /app/backend
+
 COPY .env /app/.env
 COPY requirements.txt /app/requirements.txt
 
