@@ -79,3 +79,4 @@ function Resume() {
         return <ErrorMessage message="Failed to load resume page" />;
     }
 }
+export default Resume;
