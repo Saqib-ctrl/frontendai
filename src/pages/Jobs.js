@@ -197,3 +197,4 @@ function Jobs() {
         return <ErrorMessage message="Failed to load jobs page" />;
     }
 }
+export default Jobs;
