@@ -1,3 +1,7 @@
+import React from 'react';
+import NotificationBar from './NotificationBar';
+import SearchBar from './SearchBar';
+
 function Header({ currentUser, setCurrentUser }) {
     try {
         const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -19,7 +23,7 @@ function Header({ currentUser, setCurrentUser }) {
         };
 
         const getRoleBadgeColor = (role) => {
-            switch(role) {
+            switch (role) {
                 case 'admin':
                     return 'bg-purple-100 text-purple-800';
                 case 'employer':
@@ -36,16 +40,24 @@ function Header({ currentUser, setCurrentUser }) {
                     <div className="flex justify-between items-center h-16 md:h-14">
                         <div className="flex items-center">
                             {currentUser && (
-                                <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}"
+                                <button
+                                    style={{
+                                        padding: '10px 16px',
+                                        backgroundColor: '#007bff',
+                                        color: 'white',
+                                        border: 'none',
+                                        borderRadius: '4px',
+                                        cursor: 'pointer'
+                                    }}
                                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                                     className="md:hidden mr-2 p-2 rounded-md text-gray-500 hover:text-gray-600 hover:bg-gray-100"
                                 >
                                     <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
                                 </button>
                             )}
-                            
-                            <div 
-                                className="flex items-center cursor-pointer" 
+
+                            <div
+                                className="flex items-center cursor-pointer"
                                 onClick={() => handleNavigation('home')}
                             >
                                 <i className="fas fa-users-gear text-blue-600 text-2xl mr-2"></i>
@@ -62,7 +74,15 @@ function Header({ currentUser, setCurrentUser }) {
                         <div className="flex items-center space-x-4">
                             {currentUser ? (
                                 <>
-                                    <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}"
+                                    <button
+                                        style={{
+                                            padding: '10px 16px',
+                                            backgroundColor: '#007bff',
+                                            color: 'white',
+                                            border: 'none',
+                                            borderRadius: '4px',
+                                            cursor: 'pointer'
+                                        }}
                                         onClick={() => setIsSearchOpen(!isSearchOpen)}
                                         className="md:hidden p-2 rounded-md text-gray-500 hover:text-gray-600 hover:bg-gray-100"
                                     >
@@ -78,7 +98,15 @@ function Header({ currentUser, setCurrentUser }) {
                                         </span>
                                     </div>
 
-                                    <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}"
+                                    <button
+                                        style={{
+                                            padding: '10px 16px',
+                                            backgroundColor: '#007bff',
+                                            color: 'white',
+                                            border: 'none',
+                                            borderRadius: '4px',
+                                            cursor: 'pointer'
+                                        }}
                                         onClick={handleLogout}
                                         className="btn btn-secondary hidden sm:flex"
                                     >
@@ -87,14 +115,30 @@ function Header({ currentUser, setCurrentUser }) {
                                 </>
                             ) : (
                                 <div className="flex items-center space-x-2 sm:space-x-4">
-                                    <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}" 
-                                        onClick={() => handleNavigation('login')} 
+                                    <button
+                                        style={{
+                                            padding: '10px 16px',
+                                            backgroundColor: '#007bff',
+                                            color: 'white',
+                                            border: 'none',
+                                            borderRadius: '4px',
+                                            cursor: 'pointer'
+                                        }}
+                                        onClick={() => handleNavigation('login')}
                                         className="btn btn-primary"
                                     >
                                         Login
                                     </button>
-                                    <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}" 
-                                        onClick={() => handleNavigation('register')} 
+                                    <button
+                                        style={{
+                                            padding: '10px 16px',
+                                            backgroundColor: '#007bff',
+                                            color: 'white',
+                                            border: 'none',
+                                            borderRadius: '4px',
+                                            cursor: 'pointer'
+                                        }}
+                                        onClick={() => handleNavigation('register')}
                                         className="btn btn-secondary hidden sm:inline-flex"
                                     >
                                         Register
@@ -128,7 +172,15 @@ function Header({ currentUser, setCurrentUser }) {
                                         </div>
                                     </div>
                                 </div>
-                                <button style={{ padding: "10px 16px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}"
+                                <button
+                                    style={{
+                                        padding: '10px 16px',
+                                        backgroundColor: '#007bff',
+                                        color: 'white',
+                                        border: 'none',
+                                        borderRadius: '4px',
+                                        cursor: 'pointer'
+                                    }}
                                     onClick={handleLogout}
                                     className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                 >
@@ -142,7 +194,8 @@ function Header({ currentUser, setCurrentUser }) {
         );
     } catch (error) {
         console.error('Header render error:', error);
-        reportError(error);
         return null;
     }
 }
+
+export default Header;
