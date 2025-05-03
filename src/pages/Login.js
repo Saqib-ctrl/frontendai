@@ -232,3 +232,4 @@ function Login() {
         return <ErrorMessage message="Failed to load login page" />;
     }
 }
+export default Login;
