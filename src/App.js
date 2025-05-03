@@ -10,7 +10,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
-import DashboardPage from './pages/DashboardPage';
+import DashboardPage from './pages/Dashboard';
 import AI from './pages/AI';
 import Messages from './pages/Messages';
 import CandidateProfile from './pages/CandidateProfile';
