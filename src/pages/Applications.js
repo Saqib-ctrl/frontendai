@@ -131,3 +131,4 @@ function Applications() {
         return <ErrorMessage message="Failed to load applications page" />;
     }
 }
+export default Applications;
