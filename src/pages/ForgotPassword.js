@@ -99,3 +99,4 @@ function ForgotPassword() {
         return <ErrorMessage message="Failed to load forgot password page" />;
     }
 }
+export default ForgotPassword;
