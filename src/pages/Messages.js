@@ -16,3 +16,4 @@ function Messages() {
         return <ErrorMessage message="Failed to load messages page" />;
     }
 }
+export default Messages;
