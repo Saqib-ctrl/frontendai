@@ -105,3 +105,4 @@ function CandidateProfile({ candidateId }) {
         return <ErrorMessage message="Failed to load candidate profile" />;
     }
 }
+export default CandidateProfile;
