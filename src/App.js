@@ -19,7 +19,6 @@ import Messages from './pages/Messages';
 import CandidateProfile from './pages/CandidateProfile';
 import EmployerProfile from './pages/EmployerProfile';
 
-import Resume from './features/candidate/Resume';
 import Jobs from './features/shared/Jobs';
 import Applications from './features/candidate/Applications';
 import RecommendedJobs from './features/candidate/RecommendedJobs';
