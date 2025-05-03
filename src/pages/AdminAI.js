@@ -563,3 +563,4 @@ function EmailTemplateGenerator() {
         </div>
     );
 }
+export default AdminAI;
