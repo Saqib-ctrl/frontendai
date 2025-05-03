@@ -183,3 +183,4 @@ function Register() {
         return <ErrorMessage message="Failed to load registration page" />;
     }
 }
+export default Register;
