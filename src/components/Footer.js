@@ -58,3 +58,4 @@ function Footer({ className = '' }) {
         return null;
     }
 }
+export default Footer;
