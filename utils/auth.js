@@ -1,6 +1,6 @@
 // src/utils/auth.js
 
-import CoreUtils from './core-utils'; // Adjust the path if needed
+import CoreUtils from './CoreUtils'; 
 
 // Session management
 const SESSION_KEY = 'currentUser';
