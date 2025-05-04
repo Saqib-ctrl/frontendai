@@ -1,0 +1,10 @@
+const CoreUtils = {
+    fetchData,
+    updateData,
+    createData,
+    validateEmail,
+    OBJECT_TYPES,
+    AppError
+};
+
+export default CoreUtils;
