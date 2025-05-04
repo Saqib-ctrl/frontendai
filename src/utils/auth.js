@@ -171,3 +171,11 @@ const AuthUtils = {
     resetPassword,
     changePassword
 };
+export {
+    getCurrentUser,
+    login,
+    register,
+    logout,
+    resetPassword,
+    changePassword
+};
