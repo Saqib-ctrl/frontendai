@@ -1,4 +1,6 @@
-// Enhanced authentication utilities
+// src/utils/auth.js
+
+import CoreUtils from './core-utils'; // Adjust the path if needed
 
 // Session management
 const SESSION_KEY = 'currentUser';
@@ -28,7 +30,7 @@ async function login(credentials) {
             throw new CoreUtils.AppError('Email and password are required', 'INVALID_INPUT');
         }
 
-        // Find user
+        // Fetch users
         const { items: users } = await CoreUtils.fetchData(CoreUtils.OBJECT_TYPES.USER);
         const user = users.find(u => u.objectData.email === credentials.email);
 
@@ -40,7 +42,6 @@ async function login(credentials) {
             throw new CoreUtils.AppError('Invalid password', 'INVALID_PASSWORD');
         }
 
-        // Create session
         const session = {
             user: {
                 id: user.objectId,
@@ -53,7 +54,6 @@ async function login(credentials) {
 
         localStorage.setItem(SESSION_KEY, JSON.stringify(session));
 
-        // Update last login
         await CoreUtils.updateData(CoreUtils.OBJECT_TYPES.USER, user.objectId, {
             ...user.objectData,
             lastLogin: new Date().toISOString()
@@ -76,20 +76,17 @@ async function register(userData) {
             throw new CoreUtils.AppError('Invalid email format', 'INVALID_EMAIL');
         }
 
-        // Check existing user
         const { items: users } = await CoreUtils.fetchData(CoreUtils.OBJECT_TYPES.USER);
         if (users.some(u => u.objectData.email === userData.email)) {
             throw new CoreUtils.AppError('Email already in use', 'EMAIL_EXISTS');
         }
 
-        // Create user
         const user = await CoreUtils.createData(CoreUtils.OBJECT_TYPES.USER, {
             ...userData,
             status: 'active',
             createdAt: new Date().toISOString()
         });
 
-        // Create profile
         await CoreUtils.createData(CoreUtils.OBJECT_TYPES.PROFILE, {
             userId: user.objectId,
             role: userData.role,
@@ -119,7 +116,6 @@ async function resetPassword(email) {
             throw new CoreUtils.AppError('Invalid email', 'INVALID_EMAIL');
         }
 
-        // Find user
         const { items: users } = await CoreUtils.fetchData(CoreUtils.OBJECT_TYPES.USER);
         const user = users.find(u => u.objectData.email === email);
 
@@ -127,7 +123,6 @@ async function resetPassword(email) {
             throw new CoreUtils.AppError('User not found', 'USER_NOT_FOUND');
         }
 
-        // Reset password to default
         await CoreUtils.updateData(CoreUtils.OBJECT_TYPES.USER, user.objectId, {
             ...user.objectData,
             password: '123456',
@@ -162,7 +157,6 @@ async function changePassword(userId, oldPassword, newPassword) {
     }
 }
 
-// Export auth utilities
 const AuthUtils = {
     getCurrentUser,
     login,
@@ -171,3 +165,5 @@ const AuthUtils = {
     resetPassword,
     changePassword
 };
+
+export default Auth;
