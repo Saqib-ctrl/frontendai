@@ -21,3 +21,4 @@ function Candidates() {
         return <ErrorMessage message="Failed to load candidates page" />;
     }
 }
+export default Candidates;
