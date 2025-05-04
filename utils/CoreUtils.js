@@ -1,64 +1,45 @@
-// src/utils/core-utils.js
-
-const OBJECT_TYPES = {
-  USER: 'users',
-  PROFILE: 'profiles'
-};
-
-class AppError extends Error {
-  constructor(message, code) {
-    super(message);
-    this.name = 'AppError';
-    this.code = code;
-  }
-}
-
-// Simulated data backend
-async function fetchData(type) {
-  const data = localStorage.getItem(type);
-  const items = data ? JSON.parse(data) : [];
-  return { items };
-}
-
-async function createData(type, objectData) {
-  const data = localStorage.getItem(type);
-  const items = data ? JSON.parse(data) : [];
-
-  const newItem = {
-    objectId: Date.now().toString(),
-    objectData
-  };
-
-  items.push(newItem);
-  localStorage.setItem(type, JSON.stringify(items));
-
-  return newItem;
-}
-
-async function updateData(type, objectId, updatedData) {
-  const data = localStorage.getItem(type);
-  let items = data ? JSON.parse(data) : [];
-
-  items = items.map(item => 
-    item.objectId === objectId ? { ...item, objectData: updatedData } : item
-  );
-
-  localStorage.setItem(type, JSON.stringify(items));
-  return true;
-}
-
-function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
 const CoreUtils = {
-  OBJECT_TYPES,
-  AppError,
-  fetchData,
-  createData,
-  updateData,
-  validateEmail
+    OBJECT_TYPES: {
+        USER: 'users',
+        PROFILE: 'profiles'
+    },
+
+    async fetchData(type) {
+        const res = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/${type}`);
+        if (!res.ok) throw new Error('Failed to fetch data');
+        return await res.json();
+    },
+
+    async createData(type, data) {
+        const res = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/${type}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('Failed to create data');
+        return await res.json();
+    },
+
+    async updateData(type, id, data) {
+        const res = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/${type}/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('Failed to update data');
+        return await res.json();
+    },
+
+    validateEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    },
+
+    AppError(message, code) {
+        const err = new Error(message);
+        err.code = code;
+        return err;
+    }
 };
 
 export default CoreUtils;
